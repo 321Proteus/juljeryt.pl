@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta name="description" content="juljeryt.pl" />
+<meta name="author" content="jujerwtf"/>
+<meta property="og:description" content="strona by @juljeryt"/>
+<meta property="og:type" content="site" />
+<meta property="og:title" content="juljeryt.pl" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,200&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/lib/tailwind.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+<body oncontextmenu="return false;">
+    <script>
+
+      document.onkeydown = function (e) {
+          if (event.keyCode == 123) {
+              return false;
+          }
+          if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+              return false;
+          }
+          if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+              return false;
+          }
+          if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+              return false;
+          }
+          if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+              return false;
+          }
+          if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+              return false;
+          }
+      }
+  </script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/title.js"></script>
+
+    <div id="start">
+        <table class="box consolas-font">
+            <tbody>
+                <tr><td><span id="line1"></span></td></tr>
+                <tr><td><span id="line2"></span></td></tr>
+                <tr><td><span id="line3 space"></span></td></tr>
+                <tr><td><span id="line4"></span></td></tr>
+            </tbody>
+        </table>
+        <button class="text-2xl absolute right-0 bottom-0 bg-gray-700 p-2 rounded-md" onclick="skipIntro()">Skip intro</button>
+    </div>
+    
+    <div id="hiddenBox" style="display:none">
+        <section id="main">
+            <div class="container h-screen consolas-font">
+                <canvas class="w-screen" id="canvas"></canvas>
+                <div class="header-text">
+                    <h1 class="brand-header ">JULJERYT.PL</h1>
+                    <p class="mt-5 mb-5"><span id="brand"></span></p>                
+                </div>
+            </div>
+        </section>
+        
+        <section id="whoAmI" class="bg-dark-cyan-blue">
+            <div class="grid grid-cols-4 grid-rows-1 gap-16">
+                <div class="col-span-4 text-center text-xl">
+                    <h1>Who am I?</h1>
+                </div>
+                <div class="md:col-span-2 md:col-start-2 col-span-4 content-text text-center">
+                    <p>My real name is <b>Julek</b>. I am interested in programming, editing videos, modding phones, experimenting with the raspberry pi (i have 3 of them), exploring cities and spending time with friends. In my free time I often listen to music, write on discord or telegram and play various games :) I live in Poland (yes, this is the country where memes such as Polish cow, O cholera fredy fazber come from).  </p>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <section id="contact" class="bg-dark-blue">
+            <div class="text-center text-xl">
+                <h1>Socialmedia / Contact</h1>
+            </div>
+            <div class="grid grid-cols-1 grid-rows-1 gap:8 mt-6 text-center">
+                <div class="col-span-1">
+                    <div class="contact-socials justify-center">
+                        <a href="https://github.com/JULJERYT"><i class="fab fa-github mr-3"></i></a>
+                        <a href="https://www.youtube.com/@juljeryt"><i class="fab fa-youtube mr-3"></i></a>
+                        <a href="https://t.me/juljeryt"><i class="fab fa-telegram mr-3"></i></a>
+                        <i class="fab fa-discord" onclick="showDiscord()"></i>
+                    </div>
+                </div>
+                <div class="col-span-1 mt-6" id="discordNameDiv" style="display:none">
+                    <p class="cursor-pointer" id="discordName" onclick="copyDiscord()">JULJERYT</p>
+                    <p class="copy-info" id="copyInfo">/\ click to copy /\</p>
+                </div>
+                <div class="col-span-1 mt-6">
+                    <a href="mailto:kontakt@juljeryt.pl" target="_blank">kontakt@juljeryt.pl</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; JULJERYT.PL | Credits (he is sigma): <a href="https://www.youtube.com/c/packagehvh">arbitrarycodeexecution</a></p>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/lib/jquery.marquee.min.js"></script>
+    <script src="assets/js/lib/jquery.cookie.min.js"></script>
+    <script src="assets/js/lib/typed.min.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+    <script src="assets/js/slider.js"></script>
+</body>
+</html>
