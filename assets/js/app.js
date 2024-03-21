@@ -24,7 +24,6 @@ function showDiscord()
     $("#discordNameDiv").fadeIn();
 }
 
-
 async function copyDiscord() {
     const copyText = document.querySelector("#discordName");
 

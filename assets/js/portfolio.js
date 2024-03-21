@@ -1,4 +1,20 @@
-// Yes I know this is leaked, and no I don't care since this is IP based ratelimit
+alert("Please turn off adblocker to see the intro.\nThis site is not a virus, you can rest easy :)\nInfo in the intro is taken from your IP and may not be correct.");
+let name = prompt('What is your name / nickname? (You can skip this, just click OK)');
+
+if (name) {
+    if (name.toLowerCase() === "juljeryt" || name.toLowerCase() === "jujer" || name.toLowerCase() === "juljer" || name.toLowerCase() === "jujer wtf" || name.toLowerCase() === "julek" || name.toLowerCase() === "juleczek") {
+        name = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
+    } else {
+        name = "for <i style='color: #0f0'>" + name + "</i>";
+    }
+} else {
+    name = "";
+}
+
+
+
+
+// Yes I know this is leaked, and I don't care since this is IP based ratelimit
 const ipgeolocation = "https://api.ipgeolocation.io/ipgeo?apiKey=bc15d999af6b473fb6282d9bd8e539de";
 const timeouts = [];
 
@@ -33,7 +49,7 @@ const writeLine = (text, speed, timeout, callback) => {
 
 $.getJSON(ipgeolocation)
     .done((data) => {
-        writeLine(["Loading...", "Granting access to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>..."], 30, () => {
+        writeLine([`Loading...`, `Granting access ${name} to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...`], 30, () => {
         if (app.skippedIntro) return;
 
         if(data.ip === 'undefined'){
