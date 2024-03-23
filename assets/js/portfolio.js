@@ -4,6 +4,8 @@ let name = prompt('What is your name / nickname? (You can skip this, just click 
 if (name) {
     if (name.toLowerCase() === "juljeryt" || name.toLowerCase() === "jujer" || name.toLowerCase() === "juljer" || name.toLowerCase() === "jujer wtf" || name.toLowerCase() === "julek" || name.toLowerCase() === "juleczek") {
         name = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
+    } else if (name.toLowerCase() === "niga" || name.toLowerCase() === "nigga" || name.toLowerCase() === "niger" || name.toLowerCase() === "nigger" || name.toLowerCase() === "nygga" || name.toLowerCase() === "nygger" ) {
+        name = "for <i style='color: #FF0000'>wtf your name is so weird</i>";
     } else {
         name = "for <i style='color: #0f0'>" + name + "</i>";
     }
