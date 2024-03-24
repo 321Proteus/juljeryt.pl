@@ -1,4 +1,4 @@
-alert("Please turn off adblocker to see the intro.\nThis site is not a virus, you can rest easy :)\nInfo in the intro is taken from your IP and may not be correct.");
+alert("Please turn off adblocker to see the intro.\n\nThis site is not a virus, you can rest easy :)\n\nInfo in the intro is taken from your IP and may not be correct.");
 let name = prompt('What is your name / nickname? (You can skip this, just click OK)');
 
 if (name) {

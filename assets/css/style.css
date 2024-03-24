@@ -116,7 +116,8 @@ body, input{
 
 @media (max-width: 1200px) {
     .swiper-slide {
-      min-height: 150px; 
+    min-height: 150px; 
+    }
   }
 
 @media (max-width: 900px) {
