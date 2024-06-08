@@ -1,8 +1,10 @@
 alert("Please turn off adblocker to see the intro.\n\nThis site is not a virus, you can rest easy :)\n\nInfo in the intro is taken from your IP and may not be correct.");
 let username = prompt('What is your name / nickname? (You can skip this, just click OK)');
 
+const matches = ["juljeryt", "jujer", "juljer", "jujer wtf", "julek", "juleczek"];
+
 if (username) {
-    if (username.toLowerCase() === "juljeryt" || username.toLowerCase() === "jujer" || username.toLowerCase() === "juljer" || username.toLowerCase() === "jujer wtf" || username.toLowerCase() === "julek" || username.toLowerCase() === "juleczek") {
+    if (matches.some(match => username.toLowerCase().includes(match))) {
         username = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
     } else if (username.toLowerCase() === "niga" || username.toLowerCase() === "nigga" || username.toLowerCase() === "niger" || username.toLowerCase() === "nigger" || username.toLowerCase() === "nygga" || username.toLowerCase() === "nygger" ) {
         username = "for <i style='color: #FF0000'>wtf your username is so weird</i>";
