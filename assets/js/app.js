@@ -1,6 +1,6 @@
 class _app { 
     id = 0;
-    brandDescription = lang.typedTitle;
+    brandDescription = lang[currentLang].typedTitle;
     iconChanger = (urls, delay) => {
         if (!urls) return;
         delay = delay || 2000;
@@ -29,19 +29,19 @@ async function copyDiscord() {
 
     let originalText = copyText.innerText;
 
-    if(copyText.innerText == lang.intro.clipboardSuccess){
+    if(copyText.innerText == lang[currentLang].intro.clipboardSuccess){
         return;
     }
 
     try {
         await navigator.clipboard.writeText(copyText.innerText);
-        copyText.innerText = lang.intro.clipboardSuccess;
+        copyText.innerText = lang[currentLang].intro.clipboardSuccess;
         
         setTimeout(() => {
             copyText.innerText = originalText;
         }, 5000);
     } catch (err) {
-        copyText.innerText = lang.intro.clipboardFailure;
+        copyText.innerText = lang[currentLang].intro.clipboardFailure;
 
         setTimeout(() => {
             copyText.innerText = originalText;
