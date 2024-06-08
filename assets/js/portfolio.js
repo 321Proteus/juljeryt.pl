@@ -3,19 +3,26 @@ let username = prompt('What is your name / nickname? (You can skip this, just cl
 
 const matches = ["juljeryt", "jujer", "juljer", "jujer wtf", "julek", "juleczek"];
 
-if (username) {
-    if (matches.some(match => username.toLowerCase().includes(match))) {
-        username = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
-    } else if (username.toLowerCase() === "niga" || username.toLowerCase() === "nigga" || username.toLowerCase() === "niger" || username.toLowerCase() === "nigger" || username.toLowerCase() === "nygga" || username.toLowerCase() === "nygger" ) {
-        username = "for <i style='color: #FF0000'>wtf your username is so weird</i>";
-    } else {
-        username = "for <i style='color: #0f0'>" + username + "</i>";
+async function checkName(a) {
+
+    var output = "";
+
+    if (matches.some(match => a.toLowerCase().includes(match))) {
+        output = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
     }
-} else {
-    username = "";
+
+    var ohio = await fetch("https://www.purgomalum.com/service/containsprofanity?text=" + a)
+    var res = await ohio.text();
+
+    if (res == "true") {
+        output = "for <i style='color: #FF0000'>wtf your name is so weird</i>";
+    }
+    else {
+        output =  "for <i style='color: #0f0'>" + a + "</i>";
+    }
+
+    return output;
 }
-
-
 
 
 // Yes I know this is leaked, and I don't care since this is IP based ratelimit
@@ -49,42 +56,6 @@ const writeLine = (text, speed, timeout, callback) => {
         const typed = new Typed(`#line${lineNumber}`, { strings: text, typeSpeed: speed, onComplete: callback });
     }, timeout);
 };
-
-
-$.getJSON(ipgeolocation)
-    .done((data) => {
-        writeLine([`Loading...`, `Granting access ${username} to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...`], 30, () => {
-        if (app.skippedIntro) return;
-
-        if(data.ip === 'undefined'){
-            skipIntro();
-        }
-
-        clearCursor();
-        const usernames = ["user", "dude"];
-        const ip = data.ip ? data.ip : usernames[Math.floor(Math.random() * usernames.length)];
-        const country = data.country_name ? data.country_name : "your country";
-        const city = data.city ? data.city : "your city";
-        writeLine([`Access granted! <span style='font-size: 14px; color: #0f0;'>[success]</span>`, `Welcome back, <i style='color: #0f0'>${ip}</i>! By the way, nice to see someone from ${country}, ${city} here!`], 30, 500, () => {
-            if (app.skippedIntro) return;
-            clearCursor();
-            writeLine([`<i style='color: #F62459'>root@juljeryt.pl:~$ </i>`], 120, 500, () => {
-            timeouts.push(
-                setTimeout(() => {
-                if (app.skippedIntro) return;
-                clearCursor();
-                setTimeout(() => {
-                    skipIntro();
-                }, 500);
-                }, 1000)
-            );
-            });
-        });
-        });
-    })
-    .fail((jqxhr, textStatus, error) => {
-        skipIntro();
-    });
 
 const skipIntro = () => {
     if (app.skippedIntro) return;
@@ -181,4 +152,46 @@ function tick() {
     update();
     requestAnimationFrame(tick);
 }
-tick();
+
+checkName(username).then(result => {
+
+    username = result;
+
+    $.getJSON(ipgeolocation)
+    .done((data) => {
+        writeLine([`Loading...`, `Granting access ${username} to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...`], 30, () => {
+        if (app.skippedIntro) return;
+
+        if(data.ip === 'undefined'){
+            skipIntro();
+        }
+
+        clearCursor();
+        const usernames = ["user", "dude"];
+        const ip = data.ip ? data.ip : usernames[Math.floor(Math.random() * usernames.length)];
+        const country = data.country_name ? data.country_name : "your country";
+        const city = data.city ? data.city : "your city";
+        writeLine([`Access granted! <span style='font-size: 14px; color: #0f0;'>[success]</span>`, `Welcome back, <i style='color: #0f0'>${ip}</i>! By the way, nice to see someone from ${country}, ${city} here!`], 30, 500, () => {
+            if (app.skippedIntro) return;
+            clearCursor();
+            writeLine([`<i style='color: #F62459'>root@juljeryt.pl:~$ </i>`], 120, 500, () => {
+            timeouts.push(
+                setTimeout(() => {
+                if (app.skippedIntro) return;
+                clearCursor();
+                setTimeout(() => {
+                    skipIntro();
+                }, 500);
+                }, 1000)
+            );
+            });
+        });
+        });
+    })
+    .fail((jqxhr, textStatus, error) => {
+        skipIntro();
+    });
+
+    tick();
+
+});
