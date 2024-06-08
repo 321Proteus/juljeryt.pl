@@ -1,5 +1,5 @@
-alert(lang.intro.adblockInfo);
-let username = prompt(lang.intro.usernamePrompt);
+alert(lang[currentLang].intro.adblockInfo);
+let username = prompt(lang[currentLang].intro.usernamePrompt);
 
 const matches = ["juljeryt", "jujer", "juljer", "jujer wtf", "julek", "juleczek wtf"];
 
@@ -21,7 +21,7 @@ async function checkName(a) {
         fmt = "success";
     }
 
-    return `for <i style='color: ${lang.username.formats[fmt].color}'>${resetPlaceholders(lang.username.formats[fmt].text, [["%a", a]])}</i>`;
+    return `for <i style='color: ${lang[currentLang].username.formats[fmt].color}'>${resetPlaceholders(lang[currentLang].username.formats[fmt].text, [["%a", a]])}</i>`;
 }
 
 function resetPlaceholders(source, placeholders) {
@@ -175,7 +175,7 @@ checkName(username).then(result => {
     
     $.getJSON(ipgeolocation)
     .done((data) => {
-        writeLine([lang.intro.loading, resetPlaceholders(lang.intro.loadingAccess, [["%username", username]])], 30, () => {
+        writeLine([lang[currentLang].intro.loading, resetPlaceholders(lang[currentLang].intro.loadingAccess, [["%username", username]])], 30, () => {
         if (app.skippedIntro) return;
 
         if(data.ip === 'undefined'){
@@ -183,11 +183,11 @@ checkName(username).then(result => {
         }
 
         clearCursor();
-        const usernames = lang.username.variants;
+        const usernames = lang[currentLang].username.variants;
         const ip = data.ip ? data.ip : usernames[Math.floor(Math.random() * usernames.length)];
-        const country = data.country_name ? data.country_name : lang.intro.defaultCountry;
-        const city = data.city ? data.city : lang.intro.defaultCity;
-        writeLine([lang.intro.accessGranted, resetPlaceholders(lang.intro.welcomeBack, [["%ip", ip], ["%city", city], ["%country", country]])], 30, 500, () => {
+        const country = data.country_name ? data.country_name : lang[currentLang].intro.defaultCountry;
+        const city = data.city ? data.city : lang[currentLang].intro.defaultCity;
+        writeLine([lang[currentLang].intro.accessGranted, resetPlaceholders(lang[currentLang].intro.welcomeBack, [["%ip", ip], ["%city", city], ["%country", country]])], 30, 500, () => {
             if (app.skippedIntro) return;
             clearCursor();
             writeLine([`<i style='color: #F62459'>root@juljeryt.pl:~$ </i>`], 120, 500, () => {
