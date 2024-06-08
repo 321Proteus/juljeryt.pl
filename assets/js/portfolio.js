@@ -21,7 +21,19 @@ async function checkName(a) {
         fmt = "success";
     }
 
-    return `for <i style='color: ${lang.username.formats[fmt].color}'>${lang.username.formats[fmt].text}</i>`;
+    return `for <i style='color: ${lang.username.formats[fmt].color}'>${resetPlaceholders(lang.username.formats[fmt].text, [["%a", a]])}</i>`;
+}
+
+function resetPlaceholders(source, placeholders) {
+
+    var output = source;
+
+    for (const el of placeholders) {
+
+        output = output.replace(el[0], el[1]);
+    }
+    return output;
+
 }
 
 
@@ -163,7 +175,7 @@ checkName(username).then(result => {
     
     $.getJSON(ipgeolocation)
     .done((data) => {
-        writeLine([lang.intro.loading, lang.intro.loadingAccess], 30, () => {
+        writeLine([lang.intro.loading, resetPlaceholders(lang.intro.loadingAccess, [["%username", username]])], 30, () => {
         if (app.skippedIntro) return;
 
         if(data.ip === 'undefined'){
@@ -175,7 +187,7 @@ checkName(username).then(result => {
         const ip = data.ip ? data.ip : usernames[Math.floor(Math.random() * usernames.length)];
         const country = data.country_name ? data.country_name : lang.intro.defaultCountry;
         const city = data.city ? data.city : lang.intro.defaultCity;
-        writeLine([lang.intro.accessGranted, lang.intro.welcomeBack], 30, 500, () => {
+        writeLine([lang.intro.accessGranted, resetPlaceholders(lang.intro.welcomeBack, [["%ip", ip], ["%city", city], ["%country", country]])], 30, 500, () => {
             if (app.skippedIntro) return;
             clearCursor();
             writeLine([`<i style='color: #F62459'>root@juljeryt.pl:~$ </i>`], 120, 500, () => {
