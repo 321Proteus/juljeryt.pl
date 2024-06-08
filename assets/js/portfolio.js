@@ -1,27 +1,27 @@
-alert("Please turn off adblocker to see the intro.\n\nThis site is not a virus, you can rest easy :)\n\nInfo in the intro is taken from your IP and may not be correct.");
-let username = prompt('What is your name / nickname? (You can skip this, just click OK)');
+alert(lang.intro.adblockInfo);
+let username = prompt(lang.intro.usernamePrompt);
 
-const matches = ["juljeryt", "jujer", "juljer", "jujer wtf", "julek", "juleczek"];
+const matches = ["juljeryt", "jujer", "juljer", "jujer wtf", "julek", "juleczek wtf"];
 
 async function checkName(a) {
 
-    var output = "";
+    var fmt = 0;
 
     if (matches.some(match => a.toLowerCase().includes(match))) {
-        output = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
+        fmt = "personalMatch";
     }
 
-    var ohio = await fetch("https://www.purgomalum.com/service/containsprofanity?text=" + a)
-    var res = await ohio.text();
+    var test = await fetch("https://www.purgomalum.com/service/containsprofanity?text=" + a)
+    var res = await test.text();
 
     if (res == "true") {
-        output = "for <i style='color: #FF0000'>wtf your name is so weird</i>";
+        fmt = "profanityMatch";
     }
     else {
-        output =  "for <i style='color: #0f0'>" + a + "</i>";
+        fmt = "success";
     }
 
-    return output;
+    return `for <i style='color: ${lang.username.formats[fmt].color}'>${lang.username.formats[fmt].text}</i>`;
 }
 
 
@@ -125,6 +125,7 @@ function draw() {
     ctx.strokeStyle = "white";
     ctx.stroke();
 }
+
 function distance(point1, point2) {
     var xs = 0;
     var ys = 0;
@@ -134,6 +135,7 @@ function distance(point1, point2) {
     ys = ys * ys;
     return Math.sqrt(xs + ys);
 }
+
 function update() {
     for (var i = 0, x = stars.length; i < x; i++) {
         var s = stars[i];
@@ -147,6 +149,7 @@ canvas.addEventListener("mousemove", function (e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 });
+
 function tick() {
     draw();
     update();
@@ -157,9 +160,10 @@ checkName(username).then(result => {
 
     username = result;
 
+    
     $.getJSON(ipgeolocation)
     .done((data) => {
-        writeLine([`Loading...`, `Granting access ${username} to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...`], 30, () => {
+        writeLine([lang.intro.loading, lang.intro.loadingAccess], 30, () => {
         if (app.skippedIntro) return;
 
         if(data.ip === 'undefined'){
@@ -167,11 +171,11 @@ checkName(username).then(result => {
         }
 
         clearCursor();
-        const usernames = ["user", "dude"];
+        const usernames = lang.username.variants;
         const ip = data.ip ? data.ip : usernames[Math.floor(Math.random() * usernames.length)];
-        const country = data.country_name ? data.country_name : "your country";
-        const city = data.city ? data.city : "your city";
-        writeLine([`Access granted! <span style='font-size: 14px; color: #0f0;'>[success]</span>`, `Welcome back, <i style='color: #0f0'>${ip}</i>! By the way, nice to see someone from ${country}, ${city} here!`], 30, 500, () => {
+        const country = data.country_name ? data.country_name : lang.intro.defaultCountry;
+        const city = data.city ? data.city : lang.intro.defaultCity;
+        writeLine([lang.intro.accessGranted, lang.intro.welcomeBack], 30, 500, () => {
             if (app.skippedIntro) return;
             clearCursor();
             writeLine([`<i style='color: #F62459'>root@juljeryt.pl:~$ </i>`], 120, 500, () => {
@@ -192,6 +196,6 @@ checkName(username).then(result => {
         skipIntro();
     });
 
-    tick();
+        tick();
 
 });
