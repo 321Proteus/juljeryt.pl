@@ -1,16 +1,16 @@
 alert("Please turn off adblocker to see the intro.\n\nThis site is not a virus, you can rest easy :)\n\nInfo in the intro is taken from your IP and may not be correct.");
-let name = prompt('What is your name / nickname? (You can skip this, just click OK)');
+let username = prompt('What is your name / nickname? (You can skip this, just click OK)');
 
-if (name) {
-    if (name.toLowerCase() === "juljeryt" || name.toLowerCase() === "jujer" || name.toLowerCase() === "juljer" || name.toLowerCase() === "jujer wtf" || name.toLowerCase() === "julek" || name.toLowerCase() === "juleczek") {
-        name = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
-    } else if (name.toLowerCase() === "niga" || name.toLowerCase() === "nigga" || name.toLowerCase() === "niger" || name.toLowerCase() === "nigger" || name.toLowerCase() === "nygga" || name.toLowerCase() === "nygger" ) {
-        name = "for <i style='color: #FF0000'>wtf your name is so weird</i>";
+if (username) {
+    if (username.toLowerCase() === "juljeryt" || username.toLowerCase() === "jujer" || username.toLowerCase() === "juljer" || username.toLowerCase() === "jujer wtf" || username.toLowerCase() === "julek" || username.toLowerCase() === "juleczek") {
+        username = "for <i style='color: #FF0000'>nuh uh you are not me</i>";
+    } else if (username.toLowerCase() === "niga" || username.toLowerCase() === "nigga" || username.toLowerCase() === "niger" || username.toLowerCase() === "nigger" || username.toLowerCase() === "nygga" || username.toLowerCase() === "nygger" ) {
+        username = "for <i style='color: #FF0000'>wtf your username is so weird</i>";
     } else {
-        name = "for <i style='color: #0f0'>" + name + "</i>";
+        username = "for <i style='color: #0f0'>" + username + "</i>";
     }
 } else {
-    name = "";
+    username = "";
 }
 
 
@@ -51,7 +51,7 @@ const writeLine = (text, speed, timeout, callback) => {
 
 $.getJSON(ipgeolocation)
     .done((data) => {
-        writeLine([`Loading...`, `Granting access ${name} to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...`], 30, () => {
+        writeLine([`Loading...`, `Granting access ${username} to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...`], 30, () => {
         if (app.skippedIntro) return;
 
         if(data.ip === 'undefined'){
