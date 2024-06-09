@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JULJERYT.PL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video id="video-background" autoplay muted loop>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the <code>video</code> element.
+    </video>
+    
+  <div id="header">
+    <p>Choose what language you want to view the website in:</p>
+  </div>
+
+  <div class="button-container">
+    <a href="https://juljeryt.pl/languages/polski" class="button" id="button1">
+        <h2 style="font-weight: bold;">Polski</h2>
+    </a>
+
+    <a href="https://juljeryt.pl/languages/english" class="button" id="button2">
+        <h2 style="font-weight: bold;">English</h2>
+    </a>
+  </div> 
+  <div id="mute-toggle" onclick="toggleMute()">
+    <span id="mute-icon">🔇</span>
+  </div>
+
+  <div id="loading-status">
+    Background load status: <span id="loading-text">not loaded yet</span>
+  </div>
+
+  <script>
+    var video = document.getElementById("video-background");
+    var muteIcon = document.getElementById("mute-icon");
+    
+    function toggleMute() {
+      if (video.muted) {
+        video.muted = false;
+        muteIcon.textContent = "🔈";
+      } else {
+        video.muted = true;
+        muteIcon.textContent = "🔇";
+      }
+    }
+
+
+
+    var video = document.getElementById("video-background");
+    var loadingStatus = document.getElementById("loading-text");
+
+    video.onprogress = function() {
+       var percent = Math.floor((video.buffered.end(0) / video.duration) * 100);
+       if (percent <= 30) {
+           loadingStatus.textContent = "not loaded yet or its bugged";
+       } else {
+           loadingStatus.textContent = "loaded!";
+        }
+    };
+    </script>
+    
+</body>
+</html>
