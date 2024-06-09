@@ -7,6 +7,8 @@ async function checkName(a) {
 
     var fmt = 0;
 
+    if (!a) return "";
+
     if (matches.some(match => a.toLowerCase().includes(match))) {
         fmt = "personalMatch";
     }
