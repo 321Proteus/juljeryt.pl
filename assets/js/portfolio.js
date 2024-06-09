@@ -21,7 +21,7 @@ async function checkName(a) {
         fmt = "success";
     }
 
-    return `for <i style='color: ${lang[currentLang].username.formats[fmt].color}'>${resetPlaceholders(lang[currentLang].username.formats[fmt].text, [["%a", a]])}</i>`;
+    return `<i style='color: ${lang[currentLang].username.formats[fmt].color}'>${resetPlaceholders(lang[currentLang].username.formats[fmt].text, [["%a", a]])}</i>`;
 }
 
 function resetPlaceholders(source, placeholders) {

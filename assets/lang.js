@@ -15,7 +15,7 @@ const lang = {
             "usernamePrompt": 'What is your name / nickname? (You can skip this, just click OK)',
 
             "loading": "Loading...",
-            "loadingAccess": "Granting access %username to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...",
+            "loadingAccess": "Granting %username access to <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...",
             "accessGranted": "Access granted! <span style='font-size: 14px; color: #0f0;'>[success]</span>",
 
             "welcomeBack": "Welcome back, <i style='color: #0f0'>%ip</i>! By the way, nice to see someone from %country, %city here!",
@@ -59,7 +59,7 @@ const lang = {
             "usernamePrompt": "Jakie jest twoje imie / nick? (Możesz to pominąć, po prostu kliknij OK)",
 
             "loading": "Ładowanie...",
-            "loadingAccess": "Przyznawanie dostępu %username do <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...",
+            "loadingAccess": "Przyznawanie  %username dostępu do <span style='font-size: 14px; color: #06d;'>[juljeryt.pl]</span>...",
             "accessGranted": "Przyznano dostęp! <span style='font-size: 14px; color: #0f0;'>[sukces]</span>",
 
             "welcomeBack": "Witaj, <i style='color: #0f0'>%ip</i>! Miło widzieć kogoś z %country, %city!",
