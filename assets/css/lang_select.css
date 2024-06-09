@@ -65,11 +65,11 @@ body {
     transform: scale(0.9);
   }
 
-  #button1 {
+  #pl {
     background: linear-gradient(45deg, #ff0f7b, #f89b29);
   }
 
-  #button2 {
+  #en {
     background: linear-gradient(45deg, #5c03bc, #2472fc);
   }
 
