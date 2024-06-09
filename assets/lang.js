@@ -1,4 +1,5 @@
-var currentLang = "pl";
+var currentLang = localStorage.getItem("language");
+if (!currentLang) currentLang = "en";
 
 const lang = {
 
