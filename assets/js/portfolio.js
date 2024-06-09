@@ -116,6 +116,8 @@ function skipIntro() {
         }, 200);
 
     });
+
+    tick();
 };
 
 const clearCursor = () => {
@@ -243,9 +245,12 @@ checkName(username).then(result => {
             writeLine([`<i style='color: #F62459'>root@juljeryt.pl:~$ </i>`], 120, 500, () => {
                 timeouts.push(
                     setTimeout(() => {
+
                         if (app.skippedIntro) return;
                         clearCursor();
+
                         setTimeout(skipIntro, 500);
+
                     }, 1000)
                 );
             });
@@ -253,7 +258,5 @@ checkName(username).then(result => {
     });
     })
     .fail(skipIntro);
-
-    tick();
 
 });
