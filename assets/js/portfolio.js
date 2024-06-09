@@ -66,7 +66,7 @@ $.fn.extend({
 
 });
 
-const writeLine = (text, speed, timeout, callback) => {
+function writeLine(text, speed, timeout, callback) {
 
     timeout = typeof timeout === "number" ? timeout : [0, (callback = timeout)];
     const lineNumber = app.id !== 2 ? ++app.id : (app.id += 2);
@@ -77,7 +77,7 @@ const writeLine = (text, speed, timeout, callback) => {
 
 };
 
-const skipIntro = () => {
+function skipIntro() {
 
     if (app.skippedIntro) return;
     app.skippedIntro = true;
