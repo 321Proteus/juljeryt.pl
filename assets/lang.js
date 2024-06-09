@@ -23,7 +23,9 @@ const lang = {
             "clipboardFailure": "failed to copy",        
 
             "defaultCountry": "your country",
-            "defaultCity": "your city"
+            "defaultCity": "your city",
+
+            "skipIntro": "Skip intro"
 
         },
 
@@ -82,7 +84,9 @@ const lang = {
             "clipboardFailure": "wystąpił błąd",        
 
             "defaultCountry": "twojego kraju",
-            "defaultCity": "twojego miasta"
+            "defaultCity": "twojego miasta",
+
+            "skipIntro": "Pomiń intro"
 
         },
 

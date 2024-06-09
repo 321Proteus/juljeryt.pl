@@ -215,6 +215,8 @@ checkName(username).then(result => {
 
     username = result;
 
+    $("#skip-intro").text(lang[currentLang].intro.skipIntro);
+
     $.getJSON(ipgeolocation)
     .done((data) => {
 
