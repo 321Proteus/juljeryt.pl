@@ -103,7 +103,14 @@ const skipIntro = () => {
         }, 1350);
 
         setTimeout(() => {
+
             $("#hiddenBox").fadeIn();
+            $("#description").html(lang[currentLang].portfolio.description);
+            $("#copyInfo").text(lang[currentLang].portfolio.clickToCopy);
+            $("#social-title").text(lang[currentLang].portfolio.socialTitle);
+            $("#whoami-title").text(lang[currentLang].portfolio.whoamiTitle);
+            $(".copyright").text(lang[currentLang].portfolio.copyright);
+
         }, 200);
 
     });
@@ -185,7 +192,7 @@ function update() {
         var s = stars[i];
         s.x += s.vx / FPS;
         s.y += s.vy / FPS;
-        
+
         if (s.x < 0 || s.x > canvas.width) s.vx = -s.vx;
         if (s.y < 0 || s.y > canvas.height) s.vy = -s.vy;
     }
