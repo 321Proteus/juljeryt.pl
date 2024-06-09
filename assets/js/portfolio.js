@@ -109,7 +109,7 @@ const skipIntro = () => {
             $("#copyInfo").text(lang[currentLang].portfolio.clickToCopy);
             $("#social-title").text(lang[currentLang].portfolio.socialTitle);
             $("#whoami-title").text(lang[currentLang].portfolio.whoamiTitle);
-            $(".copyright").text(lang[currentLang].portfolio.copyright);
+            $("#copyright").text(lang[currentLang].portfolio.copyright);
 
         }, 200);
 
